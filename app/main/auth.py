@@ -1,11 +1,12 @@
 from flask import Blueprint, request, render_template, flash, redirect, url_for
 from flask import current_app as current_app
+from app.models.User import *
+import json
 
-#from . import db
 auth = Blueprint('auth', __name__, url_prefix='/')
 
 base_meta = {'baseUrl':'http://0.0.0.0/'} 
-'''
+
 @auth.route('/login', methods=['GET'])
 def GET_login():
     testData = 'testData array'
@@ -21,16 +22,11 @@ def POST_login():
 
 def check_Interface(UserID,UserPassword):
     #UserID,UserPassword
-    db_connect = db.db_init()
-    cur     = db_connect.cursor(db.default_cursor)
-    result  = cur.execute("SELECT * FROM User WHERE UserID = '"+UserID+"' AND UserPassword='"+UserPassword+"'")
-    rv      = cur.fetchall()
-    if result == 1:
-        print("rv_userID : ",rv[0]['UserID'],"  |  rv_password : ",rv[0]['UserPassword'],
-              "  |  rv_UserAuthority : ",rv[0]['UserAuthority'],"  /   result : ",result)
-    else :
-        print("DO NOT Search")
-
-    cur.close()
-    return result
-'''
+    print("check_Interface")
+    a = user(TableName='User',UserID='sagekhw')
+    print(a.select(a,option='one'))
+    print(a.select(option=a.db_switch(queryCustom='all')))
+    print(a.select(option=a.db_switch(queryCustom='count')))
+    #a.switch(queryCustom='count')
+    #a.switch()
+    return "result"

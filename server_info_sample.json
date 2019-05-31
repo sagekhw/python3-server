@@ -1,0 +1,16 @@
+{
+    "production" : {
+        "SECRET_KEY" : "SECRET_KEY 값",
+        "DATABASES" : {
+            "default": {
+                "ENGINE": "DB 드라이버",
+                "NAME": "DB 데이터베이스",
+                "USER": "User",
+                "PASSWORD": "Password",
+                "HOST": "호스트",
+                "PORT": "포트(숫자)"
+            }
+        }
+    }
+
+} 

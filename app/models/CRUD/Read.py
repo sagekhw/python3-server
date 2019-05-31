@@ -9,16 +9,24 @@ class read:
     def addOption(self, option):
         options.append(option)
     '''
-    def select(self,model,option=None):
-        '''
-        for x in options:
-            print(x)
-        '''
+    def select(self,model=None,option=None):
         db_connect = db_init()
         cur     = db_connect.cursor(pymysql.cursors.DictCursor)
-        cur.execute("SELECT * FROM "+model.tableName)
+
+        if(option==None or option=="All"):
+            query="SELECT * FROM "+model.TableName
+        elif(option == "one"):
+            query="SELECT * FROM "+model.TableName +" where UserID like '"+model.UserID+"'"
+        else:
+            if(model==None):
+                query=option
+            else:
+                print("Nothing query")
+
+        cur.execute(query)
         rv      = cur.fetchall()
         cur.close()
         return rv
+
 
    
