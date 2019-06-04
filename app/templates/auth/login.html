@@ -12,12 +12,32 @@
                 <div>PW : <input class="input is-large" type="password" name="password" placeholder="Your Password"></div>
                 <br/>
                 <button class="button is-block is-info is-large is-fullwidth">Login</button>
+                
                 </div>
               </form>
+              <form method="GET" action="/signup"><button class="button is-block is-info is-large is-fullwidth" >Sign UP</button></form>
             </div>
         </div>
       </div> 
     </div><!-- /.container -->
+
+    <input type="text" id="parentText" value="부모창의값" />
+    <input type="text" id="receiveFromChild" value=""/>
+    <button type="button" onclick="javascript:openChildWindow();">자식창열기</button>
+    <script type="text/javascript">
+      // 자식창 window 객체를 저장할 변수
+      var windowObj;
+      function openChildWindow(){
+        // 새창에 대한 세팅(옵션)windowOpen2
+        var settings ='toolbar=0,directories=0,statwindowOpen2us=no,menubar=0,scrollbars=auto,resizable=no,height=200,width=200,left=0,top=0';
+        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
+        windowObj = window.open("/windowOpen2","자식창",settings);
+
+        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
+        windowObj.document.getElementById("childText").value = document.getElementById('parentText').value;
+      }
+    </script>
+  
 
     
 {% include 'include/footer.html' %}

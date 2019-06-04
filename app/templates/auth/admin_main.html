@@ -1,0 +1,37 @@
+{% include 'include/header.html' %}
+    <style>
+        table {
+          width: 100%;
+          border-top: 1px solid #444444;
+          border-collapse: collapse;
+        }
+        th, td {
+          border-bottom: 1px solid #444444;
+          padding: 10px;
+          text-align:center;
+        }
+    </style>
+    <div class="container">
+      <div class="starter-template">
+        <h1>Profile</h1>
+        <h1 class="title">
+                Welcome, {{ name }}!
+        </h1>
+        <form method="GET" action="/UserListAll">
+            <button class="button is-block is-info is-large is-fullwidth">UserList</button>
+        </form>
+        <table>
+            <tr>
+                <th>UserID</th><th>UserPassword</th><th>UserAuthority</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.UserID }}       </td>
+                <td>{{ user.UserPassword }} </td> 
+                <td>{{ user.UserAuthority }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+      </div> 
+    </div><!-- /.container -->
+{% include 'include/footer.html' %}

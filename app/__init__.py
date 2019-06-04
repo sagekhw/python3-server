@@ -13,5 +13,7 @@ from app.main.auth import auth as auth
 #print(__name__)
 app.register_blueprint(main)
 app.register_blueprint(auth)
+
+app.secret_key='1234'
  
 #login_manager = LoginManager()
