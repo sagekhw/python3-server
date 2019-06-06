@@ -23,16 +23,22 @@ def POST_login():
 @auth.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
+        check_loginSession()
         testData = 'testData array'
         return render_template('auth/login.html', testDataHtml=testData, base_Meta=base_meta)
     
+    
+
     if request.method == 'POST':
+        
+        check_loginSession()
         print("Login POST")
         id          = request.form.get('id')
         password    = request.form.get('password')
         print("ID : ",id," PW : ",password)
         result = check_Interface(id,password)
         print("login result : ",result)
+        
         if(result == True):
             print(request.form['id'])
             session['username'] = request.form['id']
@@ -44,7 +50,7 @@ def login():
 @auth.route('/logout', methods=['GET'])
 def logout():
     # remove the username from the session if its there
-    session.pop('username', None)
+    print("session pop : ",session.pop('username', None) )
     return render_template('auth/login.html', base_Meta=base_meta)
 
 @auth.route('/signup', methods=['GET'])
@@ -114,3 +120,9 @@ def insert_User(userid=None,password=None,auth=None):
     a = user(TableName='User',UserID=userid,UserPassword=password,UserAuthority=auth)
     print(a.db_insert(a,option='one'))
     
+def check_loginSession():
+    if 'username' in session:
+        print("session : ", session['username'])
+        return render_template('auth/login.html', base_Meta=base_meta)
+    else:
+        print("session nothing")
