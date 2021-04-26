@@ -36,6 +36,6 @@ Thumbs.db
 
 # python file
 __pycache__/
-
+.vscode
 server_info.json
 
