@@ -10,7 +10,11 @@
                 "HOST": "호스트",
                 "PORT": "포트(숫자)"
             }
+        },
+        "SERVER" :{
+            "HOST" : "IP or DNS",
+            "PORT" : "포트(숫자)",
+            "JWT_SECRET_KEY" : "input jwt cecret key"
         }
     }
-
 } 

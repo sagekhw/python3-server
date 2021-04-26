@@ -36,6 +36,6 @@ Thumbs.db
 
 # python file
 __pycache__/
-*.txt
+
 server_info.json
 

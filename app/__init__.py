@@ -1,19 +1,26 @@
-import os
-import sys
-import json
-import pymysql
-import urllib 
+# import os
+# import sys
+# import json
+# import pymysql
+# import urllib 
 from flask import Flask
+from flask_jwt_extended import *
+from flask_jwt_extended import JWTManager
+from .controller.YaroController import *
+from .controller.SimbaController import *
+from .controller.AuthController import *
+from app.config.AppConfig import *
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__)
 
-from app.main.main import main as main
-from app.main.auth import auth as auth
 
-#print(__name__)
-app.register_blueprint(main)
+#### JWT ####
+app.config["JWT_SECRET_KEY"] = FlaskConfig.JWT_SECRET_KEY
+jwt = JWTManager(app)
+"""
+# jwt = JWTManager()
+# jwt.init_app(app)
+"""
+app.register_blueprint(yaro)
+app.register_blueprint(simba)
 app.register_blueprint(auth)
-
-app.secret_key='1234'
- 
-#login_manager = LoginManager()
