@@ -14,7 +14,7 @@ class insert:
 
 
 
-### core function ###
+
 def _insert_query(query):
     return _insert_common(query)
 

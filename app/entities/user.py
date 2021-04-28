@@ -12,15 +12,4 @@ class user(crud):
     def a(self):
         print("a ",self.__class__.__name__)
 
-    # def findByAll(self):
-    #     return crud.findByAll(self,self.table_name)
-
-    # def findByOne(self):
-    #     table_name = self.table_name
-    #     id_name = 'user_id'
-    #     id = 1
-    #     query = f"SELECT email FROM {table_name} where {id_name} = {id}"
-    #     return crud.findBySQL(self,query)
-
-    # def findBySQL(self,query):
-    #     return crud.findBySQL(self,query)
+  

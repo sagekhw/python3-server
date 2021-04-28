@@ -17,7 +17,6 @@ def register():
 	user_role = input_data['role']
 
 	input_user = user(user_email,user_password,user_role)
-	print("input data : ",input_user.email)
 	return user_service.user_register(input_user)
 
 
