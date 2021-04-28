@@ -37,6 +37,6 @@ Thumbs.db
 # python file
 __pycache__/
 .vscode
-.venv
+venv
 server_info.json
 
